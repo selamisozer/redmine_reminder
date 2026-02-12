@@ -1,21 +1,20 @@
-<%= @reminder_type == :second ? '[ESCALATED] ' : '' %>Overdue Issue Reminder
+<%= @reminder_type == :second ? '[ESKALASYON] ' : '' %>Geciken İş Hatırlatması
 
-Hello <%= @recipient.firstname %>,
+Merhaba <%= @recipient.firstname %>,
 
 <% if @reminder_type == :second && @assignee %>
-This is an escalated reminder for an issue assigned to <%= @assignee.name %>.
+Bu, <%= @assignee.name %> kullanıcısına atanan iş için eskalasyon bildirimidir.
 <% end %>
 
-The following issue is <%= @days_overdue %> days overdue:
+Aşağıdaki iş <%= @days_overdue %> gün gecikmiştir:
 
-Issue: <%= @issue.tracker.name %> #<%= @issue.id %> - <%= @issue.subject %>
-Project: <%= @issue.project.name %>
-Status: <%= @issue.status.name %>
-Priority: <%= @issue.priority.name %>
-Due Date: <%= @issue.due_date %> (<%= @days_overdue %> days overdue)
-<% if @issue.assigned_to %>Assigned to: <%= @issue.assigned_to.name %><% end %>
-
-Issue URL: <%= @issue_url %>
+Proje: <%= @issue.project.name %>
+ID: #<%= @issue.id %> (<%= @issue_url %>)
+İş Tipi: <%= @issue.tracker.name %>
+Konu: <%= @issue.subject %>
+Bitiş Tarihi: <%= @issue.due_date %>
+Gecikme: <%= @days_overdue %> gün
+<% if @issue.assigned_to %>Atanan: <%= @issue.assigned_to.name %><% end %>
 
 --
-This is an automated message from Redmine Reminder Plugin.
+Bu e-posta Redmine Hatırlatma Plugin'i tarafından otomatik gönderilmiştir.

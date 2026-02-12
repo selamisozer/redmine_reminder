@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+    .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+    .header { background-color: #c00; color: white; padding: 15px; }
+    .content { background-color: #f9f9f9; padding: 20px; border: 1px solid #ddd; }
+    .issue-info { background-color: white; padding: 15px; margin: 15px 0; border-left: 4px solid #c00; }
+    .label { font-weight: bold; color: #666; }
+    .days-overdue { color: #c00; font-weight: bold; }
+    .footer { margin-top: 20px; color: #666; font-size: 0.9em; }
+    a { color: #169; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h2 style="margin: 0;"><%= @reminder_type == :second ? 'Escalated Overdue Issue' : 'Overdue Issue Reminder' %></h2>
+    </div>
+    <div class="content">
+      <p>Hello <%= @recipient.firstname %>,</p>
+      <% if @reminder_type == :second && @assignee %>
+        <p>This is an <strong>escalated reminder</strong> for an issue assigned to <strong><%= @assignee.name %></strong>.</p>
+      <% end %>
+      <p>The following issue is <span class="days-overdue"><%= @days_overdue %> days overdue</span>:</p>
+      <div class="issue-info">
+        <p><span class="label">Issue:</span> <%= @issue.tracker.name %> #<%= @issue.id %> - <%= @issue.subject %></p>
+        <p><span class="label">Project:</span> <%= @issue.project.name %></p>
+        <p><span class="label">Status:</span> <%= @issue.status.name %></p>
+        <p><span class="label">Priority:</span> <%= @issue.priority.name %></p>
+        <p><span class="label">Due Date:</span> <%= @issue.due_date %> (<%= @days_overdue %> days overdue)</p>
+        <% if @issue.assigned_to %>
+          <p><span class="label">Assigned to:</span> <%= @issue.assigned_to.name %></p>
+        <% end %>
+      </div>
+      <p><strong>Issue URL:</strong><br><a href="<%= @issue_url %>"><%= @issue_url %></a></p>
+    </div>
+    <div class="footer">
+      <p>This is an automated message from Redmine Reminder Plugin.</p>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+tr:
+  label_reminder_enabled: "Hatırlatma eklentisini etkinleştir"
+  label_first_reminder_days: "İlk hatırlatma (gecikme gün sayısı)"
+  label_second_reminder_days: "İkinci hatırlatma - Eskalasyon (gecikme gün sayısı)"
+  label_manager: "Yönetici (eskalasyon alıcısı)"
+  label_enabled_statuses: "İzlenecek iş durumları"
+  label_email_subject: "E-posta konu öneki"
+  text_first_reminder_days_info: "İş bu kadar gün geciktiğinde atanan kişiye hatırlatma gönder."
+  text_second_reminder_days_info: "İş bu kadar gün geciktiğinde yöneticiye eskalasyon yap."
+  text_manager_info: "Eskalasyon e-postaları alacak kullanıcı."
+  text_enabled_statuses_info: "İzlenecek durumları seçin. Tümü için boş bırakın."
+  notice_test_reminder_sent: "Test hatırlatması başarıyla gönderildi."

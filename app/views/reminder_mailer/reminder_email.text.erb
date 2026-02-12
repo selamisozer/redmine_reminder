@@ -1,0 +1,21 @@
+<%= @reminder_type == :second ? '[ESCALATED] ' : '' %>Overdue Issue Reminder
+
+Hello <%= @recipient.firstname %>,
+
+<% if @reminder_type == :second && @assignee %>
+This is an escalated reminder for an issue assigned to <%= @assignee.name %>.
+<% end %>
+
+The following issue is <%= @days_overdue %> days overdue:
+
+Issue: <%= @issue.tracker.name %> #<%= @issue.id %> - <%= @issue.subject %>
+Project: <%= @issue.project.name %>
+Status: <%= @issue.status.name %>
+Priority: <%= @issue.priority.name %>
+Due Date: <%= @issue.due_date %> (<%= @days_overdue %> days overdue)
+<% if @issue.assigned_to %>Assigned to: <%= @issue.assigned_to.name %><% end %>
+
+Issue URL: <%= @issue_url %>
+
+--
+This is an automated message from Redmine Reminder Plugin.

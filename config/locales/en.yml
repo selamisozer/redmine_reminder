@@ -1,0 +1,12 @@
+en:
+  label_reminder_enabled: "Enable reminder plugin"
+  label_first_reminder_days: "First reminder (days overdue)"
+  label_second_reminder_days: "Second reminder - Escalation (days overdue)"
+  label_manager: "Manager (escalation recipient)"
+  label_enabled_statuses: "Issue statuses to monitor"
+  label_email_subject: "Email subject prefix"
+  text_first_reminder_days_info: "Send reminder to assignee when issue is overdue by this many days."
+  text_second_reminder_days_info: "Escalate to manager when issue is overdue by this many days."
+  text_manager_info: "User who will receive escalation emails."
+  text_enabled_statuses_info: "Select statuses to monitor. Leave empty for all."
+  notice_test_reminder_sent: "Test reminder sent successfully."

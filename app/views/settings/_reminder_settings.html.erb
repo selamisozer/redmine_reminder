@@ -1,0 +1,37 @@
+<div class="box tabular">
+  <p>
+    <label><%= l(:label_reminder_enabled) %></label>
+    <%= check_box_tag 'settings[enabled]', true, @settings[:enabled].to_s == 'true' || @settings[:enabled] == true %>
+  </p>
+  <p>
+    <label><%= l(:label_first_reminder_days) %></label>
+    <%= number_field_tag 'settings[first_reminder_days]', @settings[:first_reminder_days], min: 1, max: 365, size: 5 %>
+    <em class="info"><%= l(:text_first_reminder_days_info) %></em>
+  </p>
+  <p>
+    <label><%= l(:label_second_reminder_days) %></label>
+    <%= number_field_tag 'settings[second_reminder_days]', @settings[:second_reminder_days], min: 1, max: 365, size: 5 %>
+    <em class="info"><%= l(:text_second_reminder_days_info) %></em>
+  </p>
+  <p>
+    <label><%= l(:label_manager) %></label>
+    <%= select_tag 'settings[manager_id]', options_from_collection_for_select(User.active.sorted, :id, :name, @settings[:manager_id]), include_blank: true %>
+    <em class="info"><%= l(:text_manager_info) %></em>
+  </p>
+  <p>
+    <label><%= l(:label_enabled_statuses) %></label>
+    <% statuses = IssueStatus.sorted %>
+    <% selected_statuses = @settings[:enabled_statuses].is_a?(Array) ? @settings[:enabled_statuses].map(&:to_i) : [] %>
+    <% statuses.each do |status| %>
+      <label class="block">
+        <%= check_box_tag 'settings[enabled_statuses][]', status.id, selected_statuses.include?(status.id) %>
+        <%= status.name %>
+      </label>
+    <% end %>
+    <em class="info"><%= l(:text_enabled_statuses_info) %></em>
+  </p>
+  <p>
+    <label><%= l(:label_email_subject) %></label>
+    <%= text_field_tag 'settings[email_subject]', @settings[:email_subject], size: 50 %>
+  </p>
+</div>
